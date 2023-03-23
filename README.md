@@ -1,1 +1,1 @@
-# Oracle_ez - DB(SQL)_exam
+# Oracle_ez - DB_exam(SQL)
