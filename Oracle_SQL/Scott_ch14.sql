@@ -1,5 +1,5 @@
 --ex14_1
---NOT NULLÁ¦¾à Á¶°Ç (NULLÀº »ç¿ë ¸øÇÏ³ª, ´Ù¸¥ Çà°ú Áßº¹Àº Çã¿ëÇÑ´Ù.)
+--NOT NULLì œì•½ ì¡°ê±´ (NULLì€ ì‚¬ìš© ëª»í•˜ë‚˜, ë‹¤ë¥¸ í–‰ê³¼ ì¤‘ë³µì€ í—ˆìš©í•œë‹¤.)
 CREATE TABLE TABLE_NOTNULL
 (LOGIN_ID VARCHAR2(20) NOT NULL,
 LOGIN_PWD VARCHAR2(20) NOT NULL,
@@ -9,26 +9,26 @@ TEL VARCHAR2(20)
 DESC TABLE_NOTNULL;
 
 --ex14_2
---NOT NULLÄÃ·³¿¡ NULL°ªÀ» »ç¿ë
+--NOT NULLì»¬ëŸ¼ì— NULLê°’ì„ ì‚¬ìš©
 INSERT INTO TABLE_NOTNULL (LOGIN_ID, LOGIN_PWD, TEL)
 VALUES ('TEST_ID_01', NULL, '010-1234-5678');
 
 --ex14_3
---NULLÇã¿ë ÄÃ·³ TEL ÄÃ·³À» INSERT¿¡¼­ Á¦¿Ü½Ã NULLÀÌ ÀÚµ¿À¸·Î ºÎ¿©µÈ´Ù.
+--NULLí—ˆìš© ì»¬ëŸ¼ TEL ì»¬ëŸ¼ì„ INSERTì—ì„œ ì œì™¸ì‹œ NULLì´ ìžë™ìœ¼ë¡œ ë¶€ì—¬ëœë‹¤.
 INSERT INTO TABLE_NOTNULL (LOGIN_ID, LOGIN_PWD)
 VALUES ('TEST_ID_01', '1234');
 
 SELECT * FROM TABLE_NOTNULL;
 
 --ex14_4
---NOT NULLÄÃ·³¿¡ UPDATE½Ã ¿À·ù°¡ ¹ß»ýÇÑ´Ù.
+--NOT NULLì»¬ëŸ¼ì— UPDATEì‹œ ì˜¤ë¥˜ê°€ ë°œìƒí•œë‹¤.
 UPDATE TABLE_NOTNULL
 SET LOGIN_PWD = NULL
 WHERE LOGIN_ID = 'TEST_ID_01';
 
 --ex14_5
 SELECT OWNER, CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME
-FROM USER_CONSTRAINTS; --Á¦¾à»çÇ× °ü·Ã µ¥ÀÌÅÍ »çÀü
+FROM USER_CONSTRAINTS; --ì œì•½ì‚¬í•­ ê´€ë ¨ ë°ì´í„° ì‚¬ì „
 
 --ex14_6
 CREATE TABLE TABLE_NOTNULL2(
@@ -41,13 +41,13 @@ SELECT OWNER, CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME
 FROM USER_CONSTRAINTS;
 
 --ex14_7
-/* ÀÌ¹Ì ÄÃ·´°ª¿¡ NULLÀÌ ÀÖ´Ù¸é NOT NULL Á¦¾àÁ¶°Ç
-¶§¹®¿¡ º¯°æÀÌ ºÒ°¡´ÉÇÏ¿© ¿À·ù°¡ ¹ß»ýÇÑ´Ù. */
+/* ì´ë¯¸ ì»¬ëŸ½ê°’ì— NULLì´ ìžˆë‹¤ë©´ NOT NULL ì œì•½ì¡°ê±´
+ë•Œë¬¸ì— ë³€ê²½ì´ ë¶ˆê°€ëŠ¥í•˜ì—¬ ì˜¤ë¥˜ê°€ ë°œìƒí•œë‹¤. */
 ALTER TABLE TABLE_NOTNULL
 MODIFY(TEL NOT NULL);
 
 --ex14_8
---NULLÀ» ´Ù¸¥ °ªÀ¸·Î º¯°æ ÈÄ NOT NULL·Î ¼öÁ¤ÇÑ´Ù.
+--NULLì„ ë‹¤ë¥¸ ê°’ìœ¼ë¡œ ë³€ê²½ í›„ NOT NULLë¡œ ìˆ˜ì •í•œë‹¤.
 UPDATE TABLE_NOTNULL
 SET TEL = '010-1234-5678'
 WHERE LOGIN_ID = 'TEST_ID_01';
@@ -55,7 +55,7 @@ WHERE LOGIN_ID = 'TEST_ID_01';
 SELECT * FROM TABLE_NOTNULL;
 
 --ex14_9
---º¯°æ ÈÄ NOT NULL·Î º¯°æ °¡´É
+--ë³€ê²½ í›„ NOT NULLë¡œ ë³€ê²½ ê°€ëŠ¥
 ALTER TABLE TABLE_NOTNULL
 MODIFY(TEL NOT NULL);
 
@@ -63,7 +63,7 @@ SELECT OWNER, CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME
 FROM USER_CONSTRAINTS;
 
 --ex14_10
---Á¦¾àÁ¶°Ç¿¡ ÀÌ¸§À» ºÎ¿©
+--ì œì•½ì¡°ê±´ì— ì´ë¦„ì„ ë¶€ì—¬
 ALTER TABLE TABLE_NOTNULL2
 MODIFY(TEL CONSTRAINT TBLNN_TEL_NN NOT NULL);
 
@@ -74,7 +74,7 @@ FROM USER_CONSTRAINTS;
 DESC TABLE_NOTNULL2;
 
 --ex14_12
---ÀÌ¹Ì ¸¸µé¾îÁø Á¦¾àÁ¶°Ç ÀÌ¸§À» º¯°æ
+--ì´ë¯¸ ë§Œë“¤ì–´ì§„ ì œì•½ì¡°ê±´ ì´ë¦„ì„ ë³€ê²½
 ALTER TABLE TABLE_NOTNULL2
 RENAME CONSTRAINT TBLNN_TEL_NN
 TO TBLNN2_TEL_NN;
@@ -83,47 +83,47 @@ SELECT OWNER, CONSTRAINT_NAME,
 CONSTRAINT_TYPE, TABLE_NAME
 FROM USER_CONSTRAINTS;
 
---ex14_13 - Á¦¾àÁ¶°Ç »èÁ¦
+--ex14_13 - ì œì•½ì¡°ê±´ ì‚­ì œ
 ALTER TABLE TABLE_NOTNULL2
 DROP CONSTRAINT TBLNN2_TEL_NN;
 
 DESC TABLE_NOTNULL2;
 
---ex14_14 - UNIQUE : À¯ÀÏÇÑ °ª
+--ex14_14 - UNIQUE : ìœ ì¼í•œ ê°’
 CREATE TABLE TABLE_UNIQUE (
-LOGIN_ID VARCHAR2(20) UNIQUE, --À¯ÀÏÇÑ °ª(NULL Çã¿ë)
+LOGIN_ID VARCHAR2(20) UNIQUE, --ìœ ì¼í•œ ê°’(NULL í—ˆìš©)
 LOGIN_PWD VARCHAR2(20) NOT NULL,
 TEL VARCHAR2(20)
 );
 
 DESC TABLE_UNIQUE;
 
---ex14_15 - CONSTRAINT·Î Á¦¾àÁ¶°Ç È®ÀÎ
+--ex14_15 - CONSTRAINTë¡œ ì œì•½ì¡°ê±´ í™•ì¸
 SELECT OWNER, CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME
 FROM USER_CONSTRAINTS
 WHERE TABLE_NAME = 'TABLE_UNIQUE';
 
 --ex14_16
---UNIQUEÀÎ LOGIN_ID´Â Áßº¹ °ªÀ» Çã¿ëÇÏÁö ¾Ê´Â´Ù.
+--UNIQUEì¸ LOGIN_IDëŠ” ì¤‘ë³µ ê°’ì„ í—ˆìš©í•˜ì§€ ì•ŠëŠ”ë‹¤.
 
 INSERT INTO TABLE_UNIQUE(LOGIN_ID, LOGIN_PWD, TEL) 
 VALUES('TEST_ID_01', 'PWD01', '010-1234-5678');
 
 --ex14_19
---UNIQUEÀÎ LOGIN_ID´Â Áßº¹ °ªÀ» Çã¿ëÇÏÁö ¾ÊÀ¸¸ç NULLÀº Çã¿ëÇÑ´Ù.
+--UNIQUEì¸ LOGIN_IDëŠ” ì¤‘ë³µ ê°’ì„ í—ˆìš©í•˜ì§€ ì•Šìœ¼ë©° NULLì€ í—ˆìš©í•œë‹¤.
 INSERT INTO TABLE_UNIQUE(LOGIN_ID, LOGIN_PWD, TEL) 
 VALUES(NULL, 'PWD03', '010-1234-5677');
 
 SELECT * FROM TABLE_UNIQUE;
 
 --ex14_20
---UPDATEµµ Áßº¹ °ªÀº Çã¿ëÀÌ ¾ÈµÇ¹Ç·Î ¿¡·¯ ¹ß»ý!
+--UPDATEë„ ì¤‘ë³µ ê°’ì€ í—ˆìš©ì´ ì•ˆë˜ë¯€ë¡œ ì—ëŸ¬ ë°œìƒ!
 UPDATE TABLE_UNIQUE
 SET LOGIN_ID = 'TEST_ID_01'
 WHERE LOGIN_ID IS NULL;
 
 --ex14_21
---Å×ÀÌºí »ý¼º½Ã Á¦¾àÁ¶°Ç ÀÌ¸§À» ºÎ¿©ÇÏ¿© Á¦¾àÁ¶°ÇÀ» ¼³Á¤ÇÑ´Ù.
+--í…Œì´ë¸” ìƒì„±ì‹œ ì œì•½ì¡°ê±´ ì´ë¦„ì„ ë¶€ì—¬í•˜ì—¬ ì œì•½ì¡°ê±´ì„ ì„¤ì •í•œë‹¤.
 CREATE TABLE TABLE_UNIQUE2 (
 LOGIN_ID VARCHAR2(20) CONSTRAINT TBLUNQ2_LGNID_UNQ UNIQUE,
 LOGIN_PWD VARCHAR2(20) CONSTRAINT TBLUNQ2_LGNPW_NN NOT NULL,
@@ -134,14 +134,14 @@ TEL VARCHAR2(20)
 SELECT OWNER, CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME
 FROM USER_CONSTRAINTS
 WHERE TABLE_NAME LIKE 'TABLE_UNIQUE%'; 
---%´Â ¿ÍÀÏµåÄ«µå·Î¼­ 0ÀÚ ÀÌ»óÀÇ ¸ðµç ¹®ÀÚ¿­À» ¹ÝÈ¯
+--%ëŠ” ì™€ì¼ë“œì¹´ë“œë¡œì„œ 0ìž ì´ìƒì˜ ëª¨ë“  ë¬¸ìžì—´ì„ ë°˜í™˜
 
 SELECT * FROM TABLE_UNIQUE;
 SELECT * FROM TABLE_UNIQUE2;
 
 --ex14_23
 ALTER TABLE TABLE_UNIQUE
-MODIFY(TEL UNIQUE); --TELÄÃ·³¿¡ Áßº¹µÈ °ªÀÌ ÀÖÀ¸¸é º¯°æ ºÒ°¡(¿À·ù¹ß»ý)
+MODIFY(TEL UNIQUE); --TELì»¬ëŸ¼ì— ì¤‘ë³µëœ ê°’ì´ ìžˆìœ¼ë©´ ë³€ê²½ ë¶ˆê°€(ì˜¤ë¥˜ë°œìƒ)
 
 --ex14_24
 UPDATE TABLE_UNIQUE
@@ -149,12 +149,12 @@ SET TEL = NULL;
 
 SELECT * FROM TABLE_UNIQUE;
 
---ex14_25 - (¼öÁ¤¼º°ø)
+--ex14_25 - (ìˆ˜ì •ì„±ê³µ)
 ALTER TABLE TABLE_UNIQUE
 MODIFY(TEL UNIQUE);
 
 --ex14_26
---Å×ÀÌºí »ý¼º ÈÄ Á¦¾àÁ¶°Ç¸í ÁÖ±â
+--í…Œì´ë¸” ìƒì„± í›„ ì œì•½ì¡°ê±´ëª… ì£¼ê¸°
 ALTER TABLE TALBE_UNIQUE2
 MODIFY(TEL CONSTRAINT TBLUNQ_TEL_UNQ UNIQUE);
 
@@ -163,12 +163,12 @@ FROM USER_CONSTRAINTS
 WHERE TABLE_NAME LIKE 'TABLE_UNIQUE%';
 
 --ex14_27
---ÀÌ¹Ì ÁÖ¾îÁø Á¦¾àÁ¶°Ç º¯°æÀº RENAME TO¸¦ »ç¿ëÇÑ´Ù.
+--ì´ë¯¸ ì£¼ì–´ì§„ ì œì•½ì¡°ê±´ ë³€ê²½ì€ RENAME TOë¥¼ ì‚¬ìš©í•œë‹¤.
 ALTER TABLE TABLE_UNIQUE2
 RENAME CONSTRAINT TBLUNQ_TEL_UNQ TO TBLUNQ2_TEL_UNQ;
 
 --ex14_28
---Á¦¾àÁ¶°Ç¸í »èÁ¦´Â DROP
+--ì œì•½ì¡°ê±´ëª… ì‚­ì œëŠ” DROP
 ALTER TABLE TABLE_UNIQUE2
 RENAME CONSTRAINT TBLUNQ_TEL_UNQ
 TO TBLUNQ2_TEL_UNQ;
@@ -178,3 +178,161 @@ FROM USER_CONSTRAINTS
 WHERE TABLE_NAME LIKE 'TABLE_UNIQUE%';
 
 --ex14_29
+--í…Œì´ë¸” ìƒì„±ì‹œ PRIMARY KEYì§€ì •
+CREATE TABLE TABLE_PK (
+   LOGIN_ID VARCHAR2(20) PRIMARY KEY,
+   LOGIN_PWD VARCHAR2(20) NOT NULL,
+   TEL VARCHAR2(20)
+);
+
+DESC TABLE_PK;
+
+--ex14_30
+SELECT OWNER,CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME
+FROM USER_CONSTRAINTS --ì œì•½ì‚¬í•­ ê´€ë ¨ ë°ì´í„° ì‚¬ì „
+WHERE TABLE_NAME LIKE 'TABLE_PK%';
+
+--ex14_31
+--PRIMARY KEYëŠ” INDEX ìžë™ìƒì„±
+SELECT INDEX_NAME, TABLE_OWNER, TABLE_NAME
+FROM USER_INDEXES
+WHERE TABLE_NAME LIKE 'TABLE_PK%';
+
+--ex14_32
+--í…Œì´ë¸” ë§Œë“¤ì‹œ ì œì•½ì¡°ê±´ì— ì´ë¦„ ë¶€ì—¬
+CREATE TABLE TABLE_PK2(
+LOGIN_ID VARCHAR2(20) CONSTRAINT
+TBLPK2_LGNID_PK PRIMARY KEY,
+LOGIN_PWD VARCHAR2(20) CONSTRAINT
+TBLPK2_LGNPW_NN NOT NULL,
+TEL VARCHAR2(20)
+);
+
+DESC TABLE_PK2;
+
+
+--ex14_33
+--í…Œì´ë¸”ì— INSERT(DMLë¡œ COMMITì „ê¹Œì§€ëŠ” ì˜êµ¬ ì €ìž¥ì´ ì•ˆë¨)
+INSERT INTO TABLE_PK(LOGIN_ID, LOGIN_PWD, TEL) VALUES('TEST_ID_01', 'PWD01', '010-1234-5678');
+
+SELECT * FROM TABLE_PK;
+
+--ex14_34
+--PKì— ì¤‘ë³µê°’ ìž…ë ¥í•˜ë©´ ì˜¤ë¥˜ ë°œìƒ
+INSERT INTO TABLE_PK(LOGIN_ID, LOGIN_PWD, TEL) 
+VALUES('TEST_ID_01', 'PWD02', '010-2345-6789');
+
+--ex14_35
+--PKëŠ” NULLì„ í—ˆìš©í•˜ì§€ ì•ŠëŠ”ë‹¤
+INSERT INTO TABLE_PK(LOGIN_ID, LOGIN_PWD, TEL)
+VALUES(NULL, ï¼‡PWD02ï¼‡, ï¼‡010-2345-6789ï¼‡);
+
+--ex14_36
+--ë¬µì‹œì  NULLë„ ì˜¤ë¥˜
+INSERT INTO TABLE_PK(LOGIN_PWD, TEL)
+VALUES('PWD02', '010-2345-6789');
+
+--ex14_37
+SELECT OWNER, CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME, R_OWNER, R_CONSTRAINT_NAME
+FROM USER_CONSTRAINTS
+WHERE TABLE_NAME IN ('EMP', 'DEPT');
+
+--ex14_38
+--FOREIGN KEYë¡œ DEPTNOê°€ ì°¸ì¡°í•˜ëŠ” ë¶€ëª¨ í…Œì´ë¸”ì— ìžˆëŠ” ê°’ì¸ì§€ í™•ì¸
+INSERT INTO EMP
+(EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
+VALUES(9999, 'í™ê¸¸ë™', 'CLERK', '7788', TO_DATE('2017/04/30', 'YYYY/MM/DD'), 1200, NULL, 50);
+
+--ex14_39
+--FOREIGN KEYìš© ë¶€ëª¨ í…Œì´ë¸”
+CREATE TABLE DEPT_FK(
+DEPTNO NUMBER(2) CONSTRAINT
+DEPTFK_DEPTNO_PK PRIMARY KEY,
+DNAME VARCHAR2(14),
+LOC VARCHAR2(13)
+);
+
+DESC DEPT_FK;
+
+--ex14_40
+CREATE TABLE EMP_FK(
+EMPNO NUMBER(4) CONSTRAINT EMPFK_EMPNO_PK PRIMARY KEY,
+ENAME VARCHAR2(10),
+JOB VARCHAR2(9),
+MGR NUMBER(4),
+HIREDATE DATE,
+SAL NUMBER(7,2),
+COMM NUMBER(7,2),
+DEPTNO NUMBER(2) CONSTRAINT EMPFK_DEPTNO_FK
+REFERENCES DEPT_FK (DEPTNO) --ì™¸ëž˜í‚¤
+);
+
+DESC EMP_FK;
+
+SELECT * FROM DEPT_FK;
+
+--ex14_41
+INSERT INTO EMP_FK --í…Œì´ë¸”ì˜ ëª¨ë“  ì»¬ëŸ¼ì„ ì´ìš©
+VALUES(9999, 'TEST_NAME', 'TEST_JOB', NULL, TO_DATE('2001/01/01', 'YYYY/MM/DD'),
+3000, NULL, 10); --10ì´ DEPTNO(ì™¸ëž˜í‚¤)ì¸ë° ë¶€ëª¨ í…Œì´ë¸” DEPT_FKì— ê°’ì´ ì—†ìŒ(ì˜¤ë¥˜ë°œìƒ)
+
+--ex14_42
+INSERT INTO DEPT_FK 
+VALUES(10, 'TEST_DNAME', 'TEST_LOC');
+
+SELECT * FROM DEPT_FK;
+
+--ex14_43
+INSERT INTO EMP_FK --í…Œì´ë¸”ì˜ ëª¨ë“  ì»¬ëŸ¼ì„ ì´ìš©
+VALUES(9999, 'TEST_NAME', 'TEST_JOB', NULL,
+TO_DATE('2001/01/01', 'YYYY/MM/DD'), 3000, NULL, 10); 
+--10ì´ DEPTNO(ì™¸ëž˜í‚¤)ì¸ë° ë¶€ëª¨ í…Œì´ë¸” DEPT_FKì— ê°’ì´ ìžˆìŒ
+
+--ex14_44
+--ë¶€ëª¨ í…Œì´ë¸”ì˜ ì°¸ì¡°ì—´ì„ ì‚­ì œí•˜ë©´ ì˜¤ë¥˜ ë°œìƒ(ì—°ê²°ëœ ìžì‹ í…Œì´ë¸” ë¬¸ì œ)
+DELETE FROM DEPT_FK WHERE DEPTNO = 10;
+
+--ex14_45
+CREATE TABLE TABLE_CHECK(
+LOGIN_ID VARCHAR2(20) CONSTRAINT
+TBLCK_LOGINID_PK PRIMARY KEY,
+LOGIN_PWD VARCHAR2(20) CONSTRAINT
+TBLCK_LOGINPW_CK
+CHECK(LENGTH(LOGIN_PWD) > 3),
+TEL VARCHAR2(20)
+);
+
+DESC TABLE_CHECK;
+
+--ex14_46
+INSERT INTO TABLE_CHECK
+VALUES('TEST_ID', '1234', '010-1234-5678');
+
+SELECT * FROM TABLE_CHECK;
+
+--ex14_47
+INSERT INTO TABLE_CHECK VALUES ('TEST_ID', '1234', '010-1234-5678');
+
+SELECT * FROM TABLE_CHECK;
+
+--ex14_48
+SELECT OWNER, CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME
+FROM USER_CONSTRAINTS
+WHERE TABLE_NAME LIKE 'TABLE_CHECK';
+
+--ex14_49
+CREATE TABLE TABLE_DEFAULT(
+    LOGIN_ID VARCHAR2(20) CONSTRAINT TBLCK2_LOGINID_PK PRIMARY KEY,
+    LOGIN_PWD VARCHAR2(20) DEFAULT '1234',
+    TEL VARCHAR2(20)
+);
+
+DESC TABLE_DEFAULT;
+
+--ex14_50
+INSERT INTO TABLE_DEFAULT 
+VALUES('TEST_ID', NULL, '010-1234-5678');
+
+INSERT INTO TABLE_DEFAULT (LOGIN_ID, TEL) VALUES ('TEST_ID2', '010-1234-5678');
+
+SELECT * FROM TABLE_DEFAULT;
