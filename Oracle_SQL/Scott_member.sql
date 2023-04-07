@@ -1,10 +1,10 @@
 --member(실습) 테이블 생성
 create table member(
-name varchar2(10),
-userid varchar2(10),
-pwd varchar2(10),
-email varchar2(20),
-phone char(13),
+name varchar2(30),
+userid varchar2(30),
+pwd varchar2(30),
+email varchar2(30),
+phone char(20),
 admin number(1) default 0, --0:user 1:admin
 primary key(userid)
 );
