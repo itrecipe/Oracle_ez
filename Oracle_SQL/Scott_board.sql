@@ -21,7 +21,7 @@ insert into board(num,pass,name,email,title,content)
 values(board_seq.nextval,'1233','±è½Ü','ksk@naver.com','title2','content2');
 
 insert into board(num,pass,name,email,title,content)
-values(board_seq.nextval,'1232','¹Ú½Ü','psk@naver.com','title1','content1');
+values(board_seq.nextval,'1232','¹Ú½Ü','psk@naver.com','title3','content3');
 
 drop table board;
 drop sequence board_seq;
