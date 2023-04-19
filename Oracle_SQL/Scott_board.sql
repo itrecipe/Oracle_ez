@@ -7,7 +7,7 @@ email varchar2(30),
 title varchar2(50),
 content varchar2(500),
 readcount number(4) default 0,
-writerdate date default sysdate
+writedate date default sysdate
 );
 
 --board 시퀀스 생성(일련의 번호를 생성)
