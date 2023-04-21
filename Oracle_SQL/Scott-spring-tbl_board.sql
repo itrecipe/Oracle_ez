@@ -25,7 +25,7 @@ select * from tbl_board;
 commit;
 
 --추후 삭제 필요시 사용
---테이블 날리기
+--테이블 삭제
 drop table tbl_board;
---시퀀스 날리기
+--시퀀스 삭제
 drop sequence seq_board;
