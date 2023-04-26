@@ -25,7 +25,18 @@ select * from tbl_board;
 commit;
 
 --추후 삭제 필요시 사용
+
 --테이블 삭제
 drop table tbl_board;
+
 --시퀀스 삭제
 drop sequence seq_board;
+
+--ORACLE_DB 페이지 처리 테스트 코드
+select * from tbl_board order by bno desc;
+select * from tbl_board order by bno + 1 desc;
+
+--select문 뒤에 hint를 붙여서 데이터 검색하기
+select /*+ INDEX_ASC(tbl_board pk_board) */
+rownum rn, bno, title, content
+from tbl_board order by bno;
