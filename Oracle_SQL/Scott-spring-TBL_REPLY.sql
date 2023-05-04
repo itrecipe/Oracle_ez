@@ -28,4 +28,7 @@ select * from tbl_board;
 insert into tbl_reply(rno, bno, reply, replyer)
  		values(seq_reply.nextval, 1, '´ñ±Û', 'ÀÛ¼ºÀÚ');
 
+--ÀÎµ¦½º »ı¼º
+create index idx_reply on tbl_reply (bno desc, rno asc);
+
 commit;
