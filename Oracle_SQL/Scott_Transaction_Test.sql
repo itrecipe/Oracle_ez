@@ -16,4 +16,6 @@ where tbl_reply.bno = tbl_board.bno);
 
 select * from tbl_board;
 
+select * from tbl_reply;
+
 commit;
