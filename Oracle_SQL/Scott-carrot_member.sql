@@ -13,15 +13,16 @@ create sequence carr_mem_id_seq;
 
 --dummy 데이터 삽입
 insert into carrot_member(id, userid, userpwd, username, nickname, address) 
-values(carr_mem_id_seq.NEXTVAL,'admin','admin','운영자','영자','서울');
-
-insert into carrot_member(id, userid, userpwd, username, nickname, address) 
-values(carr_mem_id_seq.nextval,'user','user','회원','김회원','부산');
+values(carr_mem_id_seq.NEXTVAL,'admin','1234','관리자','관리자','서울');
 
 --findMember
 select * from carrot_member where username = username;
 
 select * from carrot_member;
+
+drop table carrot_member;
+
+drop sequence carr_mem_id_seq;
 
 truncate table carrot_member;
 
