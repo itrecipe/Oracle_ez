@@ -72,4 +72,12 @@ select c.*, m.nickname, m.address from carrot_articles c left outer join carrot_
 
 select * from carrot_img;
 
+--중고차 직거래 테이블 생성
+create table carrot_car(
+
+priceinfo varchar2(200)
+
+
+):
+
 commit;
