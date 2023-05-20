@@ -74,10 +74,27 @@ select * from carrot_img;
 
 --중고차 직거래 테이블 생성
 create table carrot_car(
+id number(10,0), --FK
+cno number(10,0) primary key, --PK
+title varchar2(200) not null,
+content varchar2(5000) not null,
+regDate date default sysdate,
+updateDate date default sysdate,
+cName varchar2(50),
+cType varchar2(50),
+kilos varchar2(50),
+disp varchar2(50),
+fuel varchar2(50),
+cyear varchar2(50),
+carprice varchar2(50),
+cardate varchar2(50)
+);
 
-priceinfo varchar2(200)
+select * from carrot_car;
 
+drop table carrot_car;
 
-):
+--carrot_member테이블의 ID를 참조 하기 위한 외래키 잡기
+alter table carrot_car add constraint fk_carrot_member foreign key (id) references carrot_member(id);
 
 commit;
