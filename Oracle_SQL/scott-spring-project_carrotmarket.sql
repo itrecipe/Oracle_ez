@@ -76,25 +76,32 @@ select * from carrot_img;
 create table carrot_car(
 id number(10,0), --FK
 cno number(10,0) primary key, --PK
+writer varchar(50) not null,
 title varchar2(200) not null,
-content varchar2(5000) not null,
+content varchar2(4000) not null,
 regDate date default sysdate,
 updateDate date default sysdate,
-cName varchar2(50),
-cType varchar2(50),
-kilos varchar2(50),
-disp varchar2(50),
-fuel varchar2(50),
-cyear varchar2(50),
-carprice varchar2(50),
-cardate varchar2(50)
+carname varchar2(100) not null,
+cartype varchar2(50) not null,
+caryear varchar2(50) not null,
+carprice varchar2(4000) not null,
+cardate varchar2(100) not null,
+fuel varchar2(50) not null,
+disp varchar2(50) not null,
+kilos varchar2(50) not null,
+mission varchar2(50) not null
 );
+
+create sequence car_seq;
+
+--carrot_member테이블의 ID를 참조 하기 위한 외래키 잡기
+alter table carrot_car add constraint fk_carrot_car_member foreign key (id) references carrot_member(id);
 
 select * from carrot_car;
 
 drop table carrot_car;
+drop sequence car_seq;
 
---carrot_member테이블의 ID를 참조 하기 위한 외래키 잡기
-alter table carrot_car add constraint fk_carrot_member foreign key (id) references carrot_member(id);
+select * from carrot_car where cno > 0 order by cno desc;
 
 commit;
