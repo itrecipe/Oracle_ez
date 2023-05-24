@@ -53,6 +53,8 @@ CONSTRAINT CARR_ART_MEM_FK foreign key(MEMBERNO) references carrot_member (id)
 
 create sequence carr_art_id_seq;
 
+select * from carrot_articles;
+
 --이미지 테이블
 drop table carrot_img;
 
