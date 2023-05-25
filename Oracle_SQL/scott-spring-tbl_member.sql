@@ -26,3 +26,6 @@ token varchar2(64) not null,
 last_used timestamp not null
 );
 
+select * from tbl_member;
+
+select * from persistent_logins;
