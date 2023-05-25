@@ -76,8 +76,8 @@ select * from carrot_img;
 
 --중고차 직거래 테이블 생성
 create table carrot_car(
-id number(10,0), --FK
-cno number(10,0) primary key, --PK
+id number(10,0),  
+cno number(10,0) constraint pk_carrot_car primary key,
 writer varchar(50) not null,
 title varchar2(200) not null,
 content varchar2(4000) not null,
@@ -94,9 +94,10 @@ kilos varchar2(50) not null,
 mission varchar2(50) not null
 );
 
+--시퀀스 생성
 create sequence car_seq;
 
---carrot_member테이블의 ID를 참조 하기 위한 외래키 잡기
+--carrot_member테이블의 ID를 참조 하기 위한 외래키 잡기(이거 수정해야됨 쓰면 안댐)
 alter table carrot_car add constraint fk_carrot_car_member foreign key (id) references carrot_member(id);
 
 select * from carrot_car;
@@ -109,7 +110,7 @@ select * from carrot_car where cno > 0 order by cno desc;
 delete carrot_car where cno = 1;
 
 --dummy data 삽입
-insert into carrot_car(cno,writer,title,content,carname,cartype,caryear,carprice,cardate,fuel,disp,kilos,mission) 
+insert into carrot_car(cno,writer,title,content,carname,cartype,caryear,carprice,cardate,fuel,disp,kilos,mission)
 values(car_seq.nextval,'국쌤','코란도 팝니다.','23년식 코란도 팔아요','코란도','suv','2023.05.22','1000000','23.05.22','디젤','2000CC','200,000km','오토매틱');
 
 commit;
