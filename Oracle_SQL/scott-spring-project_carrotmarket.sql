@@ -97,7 +97,7 @@ mission varchar2(50) not null
 --시퀀스 생성
 create sequence car_seq;
 
---carrot_member테이블의 ID를 참조 하기 위한 외래키 잡기(이거 수정해야됨 쓰면 안댐)
+--carrot_member테이블의 ID를 참조 하기 위한 외래키 잡기
 alter table carrot_car add constraint fk_carrot_car_member foreign key (id) references carrot_member(id);
 
 select * from carrot_car;
@@ -108,6 +108,11 @@ drop sequence car_seq;
 select * from carrot_car where cno > 0 order by cno desc;
 
 delete carrot_car where cno = 1;
+
+--select문 뒤에 hint를 붙여서 데이터 검색하기
+select /*+ INDEX_ASC(carrot_car_pk_carrot_car) */
+rownum rn, cno, title, content
+from carrot_car order by cno;
 
 --dummy data 삽입
 insert into carrot_car(cno,writer,title,content,carname,cartype,caryear,carprice,cardate,fuel,disp,kilos,mission)
