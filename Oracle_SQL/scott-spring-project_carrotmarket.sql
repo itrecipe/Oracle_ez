@@ -115,7 +115,7 @@ rownum rn, cno, title, content
 from carrot_car order by cno;
 
 --dummy data 삽입
-insert into carrot_car(cno,writer,title,content,carname,cartype,caryear,carprice,cardate,fuel,disp,kilos,mission)
-values(car_seq.nextval,'국쌤','코란도 팝니다.','23년식 코란도 팔아요','코란도','suv','2023.05.22','1000000','23.05.22','디젤','2000CC','200,000km','오토매틱');
+insert into carrot_car(id,cno,writer,title,content,carname,cartype,caryear,carprice,cardate,fuel,disp,kilos,mission)
+values(1,car_seq.nextval,'국쌤','코란도 팝니다.','23년식 코란도 팔아요','코란도','suv','2023.05.22','1000000','23.05.22','디젤','2000CC','200,000km','오토매틱');
 
 commit;
