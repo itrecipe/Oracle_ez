@@ -26,7 +26,7 @@ select * from carrot_member;
 
 --테이블 데이터 삭제 쿼리
 delete from carrot_member
-where carrot_member.id = '5';
+where carrot_member.id = '21';
 
 --게시글 테이블
 drop table carrot_articles CASCADE CONSTRAINTS;
@@ -117,5 +117,20 @@ from carrot_car order by cno;
 --test - dummy data 삽입
 insert into carrot_car(cno,writer,title,content,carname,cartype,caryear,carprice,cardate,fuel,disp,kilos,mission)
 values(car_seq.nextval,'국쌤','코란도 팝니다.','23년식 코란도 팔아요','코란도','suv','2023.05.22','1000000','23.05.22','디젤','2000CC','200,000km','오토매틱');
+
+--carrot_attach(첨부파일) 테이블 생성
+create table carrot_attach(
+uuid varchar2(100) not null,
+uploadPath varchar2(200) not null,
+fileName varchar2(100) not null,
+filetype char(1) default 'I',
+cno number(10,0)
+);
+
+--pk_carrot_attach, 기본키 잡기
+alter table carrot_attach add constraint pk_carrot_attach primary key(uuid);
+
+--fk_car_attach, 외래키 잡기
+alter table carrot_attach add constraint fk_car_attach foreign key(cno) references carrot_car(cno);
 
 commit;
