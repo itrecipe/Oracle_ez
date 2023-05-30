@@ -120,10 +120,10 @@ values(car_seq.nextval,'국쌤','코란도 팝니다.','23년식 코란도 팔아요','코란도','
 
 --carrot_attach(첨부파일) 테이블 생성
 create table carrot_attach(
-uuid varchar2(100) not null,
+uuid varchar2(200) not null,
 uploadPath varchar2(200) not null,
-fileName varchar2(100) not null,
-filetype char(1) default 'I',
+fileName varchar2(200) not null,
+filetype char(1) default '1',
 cno number(10,0)
 );
 
@@ -131,8 +131,10 @@ cno number(10,0)
 alter table carrot_attach add constraint pk_carrot_attach primary key(uuid);
 
 --fk_car_attach, 외래키 잡기
-alter table carrot_attach add constraint fk_car_attach foreign key(cno) references carrot_car(cno);
+alter table carrot_attach add constraint fk_carrot_attach foreign key(cno) references carrot_car(cno);
 
 select * from carrot_attach;
+
+drop table carrot_attach;
 
 commit;
