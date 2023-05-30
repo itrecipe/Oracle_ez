@@ -133,4 +133,6 @@ alter table carrot_attach add constraint pk_carrot_attach primary key(uuid);
 --fk_car_attach, 외래키 잡기
 alter table carrot_attach add constraint fk_car_attach foreign key(cno) references carrot_car(cno);
 
+select * from carrot_attach;
+
 commit;
