@@ -110,8 +110,8 @@ select * from carrot_car where cno > 0 order by cno desc;
 delete carrot_car where cno = 1;
 
 --select문 뒤에 hint를 붙여서 데이터 검색하기
-select /*+ INDEX_ASC(carrot_car_pk_carrot_car) */
-rownum rn, cno, title, content
+select /*+ INDEX_ASC(carrot_car pk_carrot_car) */
+rownum cno, title, content, writer, regdate, updatedate
 from carrot_car order by cno;
 
 --test - dummy data 삽입
@@ -142,8 +142,9 @@ desc carrot_attach;
 
 select * from carrot_attach;
 
-select * from carrot_car;
 select count(cno) from carrot_car;
-select * from carrot_attach where cno = 57 and rownum <=1;
+
+--이미지를 한개씩 가져올때 쓰려고 만든 쿼리
+select * from carrot_attach where cno = 57 and rownum <= 1;
 
 commit;
