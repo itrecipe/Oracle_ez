@@ -142,7 +142,8 @@ desc carrot_attach;
 
 select * from carrot_attach;
 
-
-select * from carrot_attach where rownum <= 1;
+select * from carrot_car;
+select count(cno) from carrot_car;
+select * from carrot_attach where cno = 57 and rownum <=1;
 
 commit;
