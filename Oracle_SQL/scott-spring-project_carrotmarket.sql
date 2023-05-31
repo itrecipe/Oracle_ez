@@ -140,4 +140,9 @@ drop table carrot_attach;
 
 desc carrot_attach;
 
+select * from carrot_attach;
+
+
+select * from carrot_attach where rownum <= 1;
+
 commit;
