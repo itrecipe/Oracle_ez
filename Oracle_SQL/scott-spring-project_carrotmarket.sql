@@ -134,8 +134,7 @@ alter table carrot_attach add constraint pk_carrot_attach primary key(uuid);
 alter table carrot_attach add constraint fk_carrot_attach foreign key(cno) references carrot_car(cno);
 
 select * from carrot_attach;
-select * from carrot_car;
-
+select * from carrot_car order by  cno;
 drop table carrot_attach;
 
 desc carrot_attach;
