@@ -134,7 +134,9 @@ alter table carrot_attach add constraint pk_carrot_attach primary key(uuid);
 alter table carrot_attach add constraint fk_carrot_attach foreign key(cno) references carrot_car(cno);
 
 select * from carrot_attach;
+
 select * from carrot_car order by  cno;
+
 drop table carrot_attach;
 
 desc carrot_attach;
@@ -143,7 +145,7 @@ select * from carrot_attach;
 
 select count(cno) from carrot_car;
 
---이미지를 한개씩 가져올때 쓰려고 만든 쿼리
+--이미지를 한개씩 가져올때 사용하려고 만든 쿼리
 select * from carrot_attach where cno = 57 and rownum <= 1;
 
 commit;
