@@ -8,16 +8,17 @@ replyDate date default sysdate,
 updatedate date default sysdate
 );
 
---req_reply 시퀀스 생성
+--seq_reply 시퀀스 생성
 create sequence seq_reply nocache;
 
 drop sequence seq_reply;
 drop table tbl_reply;
 truncate table tbl_reply;
 
---tbl_reply 테이블 수정 및 pk에 제약조건을 걸기
+--tbl_reply 테이블 수정, pk 걸기
 alter table tbl_reply add constraint pk_reply primary key (rno);
 
+--tbl_reply 테이블 수정, fk 걸기
 alter table tbl_reply add constraint fk_reply_board  foreign  key (bno) references tbl_board (bno);
 
 select * from tbl_reply;
