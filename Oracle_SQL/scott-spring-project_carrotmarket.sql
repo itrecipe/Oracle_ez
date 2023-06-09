@@ -131,4 +131,14 @@ set reply = '작성자1',
 updateDate = sysdate
 where rno = 1;
 
+--carrot_reply 테이블 댓글 - 트랜잭션 설정
+alter table carrot_reply add (replycnt number default 0);
+
+--carrot_reply 트랜잭션 설정 후 업데이트 쿼리
+update carrot_reply set replycnt = (select count(rno) from carrot_reply
+where carrot_reply.cno = carrot_reply.cno);
+
+select * from carrrot_car;
+
+
 commit;
