@@ -213,3 +213,5 @@ alter table CARROT_STORES_IMAGES add constraint PK_CARROT_STORES_IMAGES primary 
 
 --스토어 (게시판) FK키 만들기
 alter table CARROT_STORES_IMAGES add constraint FK_CARROT_STORES_IMAGES foreign key (bno) references CARROT_STORES(bno);
+
+commit;
