@@ -138,7 +138,8 @@ alter table carrot_reply add (replycnt number default 0);
 update carrot_reply set replycnt = (select count(rno) from carrot_reply
 where carrot_reply.cno = carrot_reply.cno);
 
-select * from carrrot_car;
+select * from carrot_car;
 
+select * from carrot_reply;
 
 commit;
