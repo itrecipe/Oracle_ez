@@ -26,6 +26,7 @@ create sequence carr_mem_id_seq;
 
 --중고거래 게시글
 drop table carrot_secondhand_articles CASCADE CONSTRAINTS;
+drop table carrot_articles cascade constraints;
 drop sequence carr_art_id_seq;
 
 create table carrot_secondhand_articles(
@@ -76,9 +77,6 @@ constraint carr_like_member_fk foreign key (memberno) REFERENCES carrot_member (
 drop sequence carr_like_seq;
 create sequence carr_like_seq;
 
-
-
-
 -- 채팅방 db
 drop table carrot_chatroom CASCADE CONSTRAINTS;
 
@@ -92,6 +90,7 @@ CONSTRAINT CARR_chat_tu_FK FOREIGN KEY (targetuser) REFERENCES CARROT_member (id
 CONSTRAINT CARR_chat_an_FK FOREIGN KEY (articleno) REFERENCES carrot_secondhand_articles (id)
 );
 drop sequence carr_chat_id_seq;
+
 create sequence carr_chat_id_seq;
 
 --채팅 메세지 db
@@ -213,3 +212,5 @@ alter table CARROT_STORES_IMAGES add constraint PK_CARROT_STORES_IMAGES primary 
 
 --스토어 (게시판) FK키 만들기
 alter table CARROT_STORES_IMAGES add constraint FK_CARROT_STORES_IMAGES foreign key (bno) references CARROT_STORES(bno);
+
+commit;
