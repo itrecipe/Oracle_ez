@@ -44,6 +44,8 @@ kilos varchar2(50) not null,
 mission varchar2(50) not null
 );
 
+drop table carrot_member;
+
 --car_seq 시퀀스 생성
 create sequence car_seq;
 
@@ -131,11 +133,11 @@ set reply = '작성자1',
 updateDate = sysdate
 where rno = 1;
 
---carrot_reply 테이블 댓글 - 트랜잭션 설정
-alter table carrot_reply add (replycnt number default 0);
+--carrot_car 테이블 댓글 - 트랜잭션 설정
+alter table carrot_car add (replycnt number default 0);
 
 --carrot_reply 트랜잭션 설정 후 업데이트 쿼리
-update carrot_reply set replycnt = (select count(rno) from carrot_reply
+update carrot_car set replycnt = (select count(rno) from carrot_reply
 where carrot_reply.cno = carrot_reply.cno);
 
 select * from carrot_car;
