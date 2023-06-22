@@ -170,13 +170,13 @@ filetype char(1) default '1',
 cno number(10,0)
 );
 
+select * from carrot_attach;
+
 --pk_carrot_attach, 기본키 잡기
 alter table carrot_attach add constraint pk_carrot_attach primary key(uuid);
 
 --fk_car_attach, 외래키 잡기
 alter table carrot_attach add constraint fk_carrot_attach foreign key(cno) references carrot_car(cno);
-
-
 
 drop table carrot_stores CASCADE CONSTRAINTS;
 ---스토어 테이블
