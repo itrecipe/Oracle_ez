@@ -18,6 +18,6 @@ alter table h_board add constraint pk_h_board primary key(bno);
 select * from h_board;
 
 --테스트용 dummy 데이터 삽입
-insert into h_board values(seq_h_board.nextval,'제목','내용','작성자','폰번호',sysdate,sysdate);
+insert into h_board values(seq_h_board.nextval,'제목','내용','작성자','010-1234-5678',sysdate,sysdate);
 
 commit;
