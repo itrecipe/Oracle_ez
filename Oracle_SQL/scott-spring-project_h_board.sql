@@ -20,4 +20,7 @@ select * from h_board;
 --테스트용 dummy 데이터 삽입
 insert into h_board values(seq_h_board.nextval,'제목','내용','작성자','010-1234-5678',sysdate,sysdate);
 
+drop table h_board;
+drop sequence seq_h_board;
+
 commit;
