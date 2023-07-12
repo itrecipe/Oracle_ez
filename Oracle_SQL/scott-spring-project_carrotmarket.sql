@@ -20,6 +20,8 @@ insert into carrot_member values(1,'admin','1234','관리자','master','서울','admi
 
 select * from carrot_member;
 
+drop table carrot_member;
+
 --테이블 데이터 삭제 쿼리
 delete from carrot_member
 where carrot_member.id = '21';
@@ -43,8 +45,6 @@ disp varchar2(50) not null,
 kilos varchar2(50) not null,
 mission varchar2(50) not null
 );
-
-drop table carrot_member;
 
 --car_seq 시퀀스 생성
 create sequence car_seq;
