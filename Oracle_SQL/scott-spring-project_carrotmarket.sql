@@ -22,6 +22,8 @@ select * from carrot_member;
 
 drop table carrot_member;
 
+drop sequence carr_mem_id_seq;
+
 --테이블 데이터 삭제 쿼리
 delete from carrot_member
 where carrot_member.id = '21';
