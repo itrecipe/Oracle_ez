@@ -65,7 +65,7 @@ delete carrot_car where cno = 1;
 
 --select문 뒤에 hint를 붙여서 데이터 검색하기
 select /*+ INDEX_ASC(carrot_car pk_carrot_car) */
-rownum cno, title, content, writer, regdate, updatedate
+rownum cno, title, writer, content, regdate, updatedate
 from carrot_car order by cno;
 
 --test - dummy data 삽입

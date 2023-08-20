@@ -25,6 +25,8 @@ create sequence carr_mem_id_seq;
 
 select * from carrot_car;
 
+select * from member;
+
 --중고거래 게시글
 drop table carrot_secondhand_articles CASCADE CONSTRAINTS;
 drop table carrot_articles cascade constraints;
