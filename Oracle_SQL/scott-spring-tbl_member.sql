@@ -8,8 +8,8 @@ updateDate date default sysdate,
 enabled char(1) default '1'
 );
 
+select * from tbl_member;
 drop table tbl_member;
-drop table tbl_member_auth;
 
 --인증(권한) 테이블 1:N 생성
 create table tbl_member_auth(
@@ -17,6 +17,9 @@ userid varchar2(50) not null,
 auth varchar2(50) not null,
 constraint fk_member_auth foreign key(userid) references tbl_member(userid)
 );
+
+select * from tbl_member_auth;
+drop table tbl_member_auth;
 
 --remember-me 관련 테이블(스프링이 지정한 규격)
 create table persistent_logins(
@@ -26,6 +29,7 @@ token varchar2(64) not null,
 last_used timestamp not null
 );
 
-select * from tbl_member;
-
 select * from persistent_logins;
+drop table persistent_logins;
+
+commit;

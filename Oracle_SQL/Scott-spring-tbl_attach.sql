@@ -8,8 +8,9 @@ bno number(10,0)
 );
 
 select * from tbl_attach;
-
 select * from tbl_board;
+
+drop table tbl_attach;
 
 --제약조건으로 pk_attach uuid에 pk잡기
 alter table tbl_attach add constraint pk_attach primary key (uuid);
