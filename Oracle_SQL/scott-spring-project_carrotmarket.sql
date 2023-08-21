@@ -21,7 +21,6 @@ insert into carrot_member values(1,'admin','1234','관리자','master','서울','admi
 select * from carrot_member;
 
 drop table carrot_member;
-
 drop sequence carr_mem_id_seq;
 
 --테이블 데이터 삭제 쿼리
@@ -61,7 +60,7 @@ drop sequence car_seq;
 
 select * from carrot_car where cno > 0 order by cno desc;
 
-delete carrot_car where cno = 1;
+delete carrot_car where cno = 5;
 
 --select문 뒤에 hint를 붙여서 데이터 검색하기
 select /*+ INDEX_ASC(carrot_car pk_carrot_car) */
@@ -141,8 +140,6 @@ alter table carrot_car add (replycnt number default 0);
 --carrot_reply 트랜잭션 설정 후 업데이트 쿼리
 update carrot_car set replycnt = (select count(rno) from carrot_reply
 where carrot_reply.cno = carrot_reply.cno);
-
-select * from carrot_car;
 
 select * from carrot_reply;
 
