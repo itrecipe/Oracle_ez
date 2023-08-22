@@ -1,4 +1,7 @@
+--CarrotMarket 쿼리(통합본)
+
 --멤버 테이블
+
 drop table carrot_member CASCADE CONSTRAINTS;
 drop sequence carr_mem_id_seq;
 
